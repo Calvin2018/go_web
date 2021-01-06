@@ -7,29 +7,30 @@ import (
 )
 
 type User struct {
-	Name string
+	Name   string
 	Gender string
-	Age int
+	Age    int
 }
 
-func sayHello(w http.ResponseWriter, r *http.Request){
+func sayHello(w http.ResponseWriter, r *http.Request) {
 	// 定义模板
 	// 解析模板
 	t, err := template.ParseFiles("./hello.tmpl")
 	if err != nil {
 		fmt.Println("parse template failed,err:%v", err)
+		//dfwhsfgh
 		return
 	}
 	// 渲染模板
-	u1 := User{  // u1.Name
+	u1 := User{ // u1.Name
 		Name:   "小王子",
 		Gender: "男",
 		Age:    18,
 	}
 	m1 := map[string]interface{}{
-		"name": "小王子",
+		"name":   "小王子",
 		"gender": "男",
-		"age": 18,
+		"age":    18,
 	}
 	hobbyList := []string{
 		"篮球",
@@ -37,8 +38,8 @@ func sayHello(w http.ResponseWriter, r *http.Request){
 		"双色球",
 	}
 	t.Execute(w, map[string]interface{}{
-		"u1": u1,
-		"m1": m1,
+		"u1":    u1,
+		"m1":    m1,
 		"hobby": hobbyList,
 	})
 }
